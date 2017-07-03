@@ -1,7 +1,0 @@
-1:
-	read file
-	convert to tetriminos
-2:
-	determine smallest sq
-3:
-	place tetriminos
