@@ -5,8 +5,8 @@
 
 typedef struct
 {
-	unsigned char x;
-	unsigned char y;
+	unsigned short x;
+	unsigned short y;
 }	curs;
 
 unsigned short tris[19];
@@ -40,29 +40,26 @@ void convert(unsigned short *t, curs c, unsigned char pos)
 
 void align(unsigned short *t)
 {
-	unsigned char lx = 4;
-	unsigned char ly = 4;
-	unsigned char cx,cy;
+	curs g = (curs){0,0};
+	curs l = (curs){4,4};
 	for(unsigned char i=0;i < 4; i++)
 	{
-		cx = getv(*t, i*2); 
-		cy = getv(*t, (i*2)+1);
-		if (cx < lx)
-			lx = cx;
-		if (cy < ly)
-			ly = cy;
+		if (g.x = getv(*t, i*2) < l.x)
+			l.x = g.x;
+		if (g.y = getv(*t, (i*2)+1) < l.y)
+			l.y = g.y;
 	}
-	if (lx)
-		for(unsigned short i=0;i < 4; i++)
-			setv(t, i*2, getv(*t, i*2) - lx);
-	if (ly)
-		for(unsigned short i=0;i < 4; i++)
-			setv(t, (i*2)+1, getv(*t, (i*2)+1) - ly);
+	if (l.x)
+		for(unsigned char i=0;i < 4; i++)
+			setv(t, i*2, getv(*t, i*2) - l.x);
+	if (l.y)
+		for(unsigned char i=0;i < 4; i++)
+			setv(t, (i*2)+1, getv(*t, (i*2)+1) - l.y);
 }
 
 unsigned short compare(unsigned short t)
 {
-	for(unsigned short i = 0; i<19; i++)
+	for(unsigned char i = 0; i<19; i++)
 	{
 		if(t == tris[i])
 		{
