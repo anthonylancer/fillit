@@ -1,12 +1,36 @@
 NAME = fillit
+
 CC = gcc
+
 FLAGS = -Wall -Werror -Wextra
 
-all: libft $(NAME)
+SRC = main.c help.c read.c
 
-libft:
-	make -C ../libft/
+SRC_DIR = src/
 
+OBJ = $(SRC:.c=.o)
 
-$(NAME):
-	$(CC) $(FLAGS) -L../libft -lft main.c 
+SRC_PATH = $(addprefix $(SRC_DIR),$(SRC))
+
+LIBFT = libft/libft.a
+
+all: $(NAME)
+
+$(NAME): $(LIBFT) $(OBJ)
+	$(CC) $(FLAGS) $(OBJ) -o $(NAME) $(LIBFT)
+
+$(OBJ): $(LIBFT)
+	$(CC) $(FLAGS) -c $(SRC_PATH)
+
+$(LIBFT):
+	make -C ./libft/
+
+clean:
+	rm -f $(OBJ)
+		make clean -C ./libft/
+
+fclean: clean
+	rm -f $(NAME)
+		make fclean -C ./libft/
+
+re: fclean all

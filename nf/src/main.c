@@ -1,4 +1,4 @@
-#include "fillit.h"
+#include "../include/fillit.h"
 
 void	fail(void)
 {
@@ -31,16 +31,18 @@ void	setup(void)
 
 int		main(int ac, char **av)
 {
-	char	p[560];
 	if (ac != 2)
-	{
 		fail();
-	}
-	if (read(open(av[1], O_RDONLY), p, 560) == -1)
-	{
+	g_p = malloc(570);
+	if (read(open(av[1], O_RDONLY), g_p, 570) == -1)
 		fail();
-	}
 	setup();
-
+	if (*g_p != '.' && *g_p != '#')
+		fail();
+	else if (!process())
+		fail();
+	for (int i=0; i < g_tabi; i++)
+		printf("%u\n", *g_tab[i]);
+	printf("%i\n", g_tabi);
 	return 0;
 }
