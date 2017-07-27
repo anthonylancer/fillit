@@ -55,6 +55,7 @@ int				main(int ac, char **av)
 	else if (!process())
 		fail();
 	g_sq = (t_v)ssq(g_tabi);
-
+	g_tabi = 0;
+	trysize();
 	return (0);
 }

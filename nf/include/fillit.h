@@ -39,6 +39,7 @@ unsigned char	g_tpi;
 char			*g_p;
 t_c				g_c;
 t_v				g_sq;
+t_c				g_co;
 unsigned char	g_help;
 
 void			setup(void);

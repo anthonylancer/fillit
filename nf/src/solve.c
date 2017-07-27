@@ -1,37 +1,66 @@
 #include "fillit.h"
 
-unsigned char	place(char map[14][14], t_v sq, unsigned short *pcs)
+unsigned char	place(char map[14][14], unsigned char pc)
 {
 	t_v i;
-	t_c co;
 
-	co = (t_c){0,0};
+	if (!(*g_tab[pc]))
+		pmap(map);
 	i = (t_v){0,0};
-	while (sq.i < 14)
+	while (i.i < g_sq.o)
 	{
-		while (i.i < sq.o)
-		{
-			while (i.i < sq.i && i.o < i.i + 1)
+		if (i.i < g_sq.i)
+			while (i.o < i.i + 1)
 			{
-				co = 
-				if (map[])
-					if ()
-
+				norm(&map, pc, i);
+				i.o++;
 			}
-		}
-		sq.i++;
-		sq.o = (sq.i * 2) - 1;
+		else 
+			while (i.o < g_sq.o - i.i)
+			{
+				norm(&map, pc, i);
+				i.o++;
+			}
+		i = (t_v){i.i + 1, 0};
+	}
+	return (0);
+}
+
+void			norm(char (*) map[14][14], unsigned char pc, t_v co)
+{
+	t_v	cc;
+
+	cc = (t_v){co.};
+	if (fits(map, pc, c))
+	{
+		putpc(pc, map, c);
+		if (!place(*map, pc + 1))
+	}	
+
+}
+
+void			trysize(void)
+{
+	while (g_sq.i < 14)
+	{
+		if (place (g_map, g_tabi))
+			return ;
+		g_sq.i++;
+		g_sq.o += 2;
 	}
 }
 
-unsigned char	fits(char *map[14][14], unsigned short *pc, t_c coor)
+unsigned char	fits(char (*) map[14][14], unsigned char pc, t_c c)
 {
-	unsigned char i;
+	unsigned char	i;
+	unsigned short	t;
 
+	t = *g_tab[pc];
 	i = 0;
 	while (i < 4)
 	{
-		if ()
+		if (*map[getv(t, (i * 2) + 1) + c.y][getv(t, i * 2) + c.x])
+			return (0);
 	}
-
+	return (1);
 }
