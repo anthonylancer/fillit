@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   fillit.h                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: amironen <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2017/07/26 20:42:15 by amironen          #+#    #+#             */
+/*   Updated: 2017/07/26 20:42:21 by amironen         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef FILLIT_H
 # define FILLIT_H
 # include <fcntl.h>
@@ -40,4 +52,5 @@ unsigned char	process();
 unsigned char	hash(void);
 unsigned char	nl(void);
 void			help(void);
+t_v				ssq(unsigned char pcs);
 #endif

@@ -43,10 +43,7 @@ unsigned char	process(void)
 	while (*g_p)
 	{
 		if (*g_p == '.')
-			if (g_c.x == 4 || g_tabi == 26 || g_p[1] == '\0')
-				return (0);
-			else
-				g_c.x++;
+			g_c.x++;
 		else if (*g_p == '#')
 		{
 			if (!hash() || g_tabi == 26 || g_p[1] == '\0')
@@ -54,16 +51,17 @@ unsigned char	process(void)
 		}
 		else if (*g_p == '\n')
 		{
-			g_help = nl();
-			if (!g_help)
+			if (!(g_help = nl()))
 				return (0);
-			if (g_help == 2)
+			else if (g_help == 2)
 				continue;
 		}
 		else
 			return (0);
 		g_p++;
 	}
+	if (g_c.x || g_c.y)
+		return (0);
 	return (1);
 }
 

@@ -29,7 +29,7 @@ char			*ft_itoa(int n)
 	char	*res;
 	size_t	len;
 	int		flag;
-	
+
 	len = intlen(n);
 	if (!(res = ft_strnew(len)))
 		return (NULL);

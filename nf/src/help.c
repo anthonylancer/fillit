@@ -46,3 +46,17 @@ unsigned char	compare(void)
 	}
 	return (0);
 }
+
+t_v				ssq(unsigned char pcs)
+{
+	unsigned char i;
+
+	i = 2;
+	while (i < 14)
+	{
+		if (pcs * 4 <= i * i)
+			return (t_v){i, (i * 2) - 1};
+		i++;
+	}
+	return (t_v){0,0};
+}

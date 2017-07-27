@@ -1,12 +1,25 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: amironen <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2017/07/26 20:40:57 by amironen          #+#    #+#             */
+/*   Updated: 2017/07/26 20:41:04 by amironen         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../include/fillit.h"
 
-void	fail(void)
+void			fail(void)
 {
+	free(g_p);
 	ft_putstr("error\n");
 	exit(0);
 }
 
-void	setup(void)
+void			setup(void)
 {
 	g_ts[0] = 291;
 	g_ts[1] = 1164;
@@ -29,7 +42,7 @@ void	setup(void)
 	g_ts[18] = 1045;
 }
 
-int		main(int ac, char **av)
+int				main(int ac, char **av)
 {
 	if (ac != 2)
 		fail();
@@ -41,8 +54,7 @@ int		main(int ac, char **av)
 		fail();
 	else if (!process())
 		fail();
-	for (int i=0; i < g_tabi; i++)
-		printf("%u\n", *g_tab[i]);
-	printf("%i\n", g_tabi);
-	return 0;
+	g_sq = (t_v)ssq(g_tabi);
+
+	return (0);
 }
