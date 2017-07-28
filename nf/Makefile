@@ -4,7 +4,7 @@ CC = gcc
 
 FLAGS = -Wall -Werror -Wextra
 
-SRC = main.c help.c read.c
+SRC = main.c help.c read.c volvo.c
 
 SRC_DIR = src/
 
@@ -35,4 +35,5 @@ fclean: clean
 
 re: fclean all
 
-k: clean all
+k:
+	$(CC) $(FLAGS) $(SRC_PATH) -o $(NAME) $(LIBFT)

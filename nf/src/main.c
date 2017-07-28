@@ -41,7 +41,31 @@ void			setup(void)
 	g_ts[17] = 16722;
 	g_ts[18] = 1045;
 }
+void			finish(char map[14][14])
+{
+	int i,o;
 
+	i = 0;
+	o = 0;
+	while (i < 14)
+	{
+		while (o < 14)
+		{
+			if (!map[i][o])
+				map[i][o] = '.';
+			o++;
+		}
+		i++;
+		o = 0;
+	}
+	i = 0;
+	while (i<14){
+		printf("%s",map[i]);
+		ft_putchar('\n');
+		i++;
+		}
+
+}
 int				main(int ac, char **av)
 {
 	if (ac != 2)

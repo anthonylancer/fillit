@@ -39,7 +39,6 @@ unsigned char	g_tpi;
 char			*g_p;
 t_c				g_c;
 t_v				g_sq;
-t_c				g_co;
 unsigned char	g_help;
 
 void			setup(void);
@@ -54,4 +53,10 @@ unsigned char	hash(void);
 unsigned char	nl(void);
 void			help(void);
 t_v				ssq(unsigned char pcs);
+t_c				itc(unsigned char i, unsigned char o, unsigned char d);
+unsigned char	place(char map[14][14], unsigned char pc);
+unsigned char	putpc(char map[14][14], unsigned char pc, t_c c);
+void			trysize(void);
+unsigned char	fits(char (*map)[14], unsigned char pc, t_c c);
+void			finish(char map[14][14]);
 #endif
