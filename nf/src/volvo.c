@@ -6,19 +6,21 @@ unsigned char	place(char map[14][14], unsigned char pc)
 	unsigned char o = 0;
 	if (!g_tab[pc])
 	{
+		//ft_putchar('!');
 		finish(map);
 		return (1);
 	}
 	while (i < g_sq.o)
 	{
 		if (i < g_sq.i)
-			while (o < i + 1)
+		{	while (o < i + 1)
 			{
 				if (fits(map, pc, itc(i,o,1)))
 					if (putpc(map, pc, itc(i,o,1)))
 						return (1);
 				o++;
 			}
+			o=0;}
 		else
 			while (o < g_sq.o - i)
 			{
@@ -68,7 +70,7 @@ void			trysize(void)
 	}
 }
 
-unsigned char	fits(char (*map)[14], unsigned char pc, t_c c)
+unsigned char	fits(char map[14][14], unsigned char pc, t_c c)
 {
 	unsigned char	i;
 

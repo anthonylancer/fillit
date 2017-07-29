@@ -41,31 +41,36 @@ void			setup(void)
 	g_ts[17] = 16722;
 	g_ts[18] = 1045;
 }
+
 void			finish(char map[14][14])
 {
-	int i,o;
+	t_v i;
 
-	i = 0;
-	o = 0;
-	while (i < 14)
+	i = (t_v){0,0};
+	while (i.i < 14)
 	{
-		while (o < 14)
+		while (i.o < 14)
 		{
-			if (!map[i][o])
-				map[i][o] = '.';
-			o++;
+			if (!map[i.i][i.o])
+			{
+				if (i.o == 13)
+					map[i.i][i.o] = '\0';
+				else
+					map[i.i][i.o] = '.';
+			}
+			i.o++;
 		}
-		i++;
-		o = 0;
+		i = (t_v){i.i + 1, 0};
 	}
-	i = 0;
-	while (i<14){
-		printf("%s",map[i]);
+	i.i = 0;
+	while (i.i < g_sq.i + 1)
+	{
+		ft_putstr(ft_strsub(map[i.i], 0, g_sq.i + 1));
 		ft_putchar('\n');
-		i++;
-		}
-
+		i.i++;
+	}
 }
+
 int				main(int ac, char **av)
 {
 	if (ac != 2)
