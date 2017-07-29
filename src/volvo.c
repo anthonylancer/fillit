@@ -1,9 +1,12 @@
 #include "../include/fillit.h"
 
-unsigned char	place(char map[14][14], unsigned char pc)
+unsigned char	place(char mcp[14][14], unsigned char pc)
 {
-	unsigned char i = 0;
-	unsigned char o = 0;
+	char			map[14][14];
+	unsigned char	i = 0;
+	unsigned char	o = 0;
+
+	mapcp(mcp, map);
 	if (!g_tab[pc])
 	{
 		//ft_putchar('!');
@@ -13,14 +16,16 @@ unsigned char	place(char map[14][14], unsigned char pc)
 	while (i < g_sq.o)
 	{
 		if (i < g_sq.i)
-		{	while (o < i + 1)
+		{
+			while (o < i + 1)
 			{
 				if (fits(map, pc, itc(i,o,1)))
 					if (putpc(map, pc, itc(i,o,1)))
 						return (1);
 				o++;
 			}
-			o=0;}
+			o=0;
+		}
 		else
 			while (o < g_sq.o - i)
 			{
@@ -34,6 +39,24 @@ unsigned char	place(char map[14][14], unsigned char pc)
 	}
 	return (0);
 }
+
+void			mapcp(char map[14][14], char sap[14][14])
+{
+	t_v	i;
+
+	i = (t_v){0,0};
+	while (i.i < 14)
+	{
+		while (i.o < 14)
+		{
+			sap[i.i][i.o] = map[i.i][i.o];
+			i.o++;
+		}
+		i.o = 0;
+		i.i++;
+	}
+}
+
 unsigned char	putpc(char map[14][14], unsigned char pc, t_c c)
 {
 	unsigned char i;
