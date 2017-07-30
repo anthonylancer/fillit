@@ -14,7 +14,6 @@
 
 void			fail(void)
 {
-	free(g_p);
 	ft_putstr("error\n");
 	exit(0);
 }
@@ -46,27 +45,29 @@ void			finish(char map[14][14])
 {
 	t_v i;
 
-	i = (t_v){0,0};
+	i = (t_v){0, 0};
+	while (i.i < g_sq.i)
+	{
+		ft_putstr(ft_strsub(map[i.i], 0, g_sq.i));
+		ft_putchar('\n');
+		i.i++;
+	}
+	exit(0);
+}
+
+void			mapcp(char map[14][14], char sap[14][14])
+{
+	t_v	i;
+
+	i = (t_v){0, 0};
 	while (i.i < 14)
 	{
 		while (i.o < 14)
 		{
-			if (!map[i.i][i.o])
-			{
-				if (i.o == 13)
-					map[i.i][i.o] = '\0';
-				else
-					map[i.i][i.o] = '.';
-			}
+			sap[i.i][i.o] = map[i.i][i.o];
 			i.o++;
 		}
-		i = (t_v){i.i + 1, 0};
-	}
-	i.i = 0;
-	while (i.i < g_sq.i + 1)
-	{
-		ft_putstr(ft_strsub(map[i.i], 0, g_sq.i + 1));
-		ft_putchar('\n');
+		i.o = 0;
 		i.i++;
 	}
 }

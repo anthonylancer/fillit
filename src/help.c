@@ -58,5 +58,5 @@ t_v				ssq(unsigned char pcs)
 			return (t_v){i, (i * 2) - 1};
 		i++;
 	}
-	return (t_v){0,0};
+	return (t_v){0, 0};
 }

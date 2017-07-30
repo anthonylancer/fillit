@@ -89,6 +89,12 @@ unsigned char	nl(void)
 		g_c = (t_c){0, 0};
 		g_tpi = 0;
 		g_t = 0;
+		if (!g_p[2] && g_p[1])
+		{
+			fail();
+			g_tabi++;
+			return (2);
+		}
 		g_p += 2;
 		g_tabi++;
 		return (2);
