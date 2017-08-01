@@ -15,7 +15,7 @@
 # include <fcntl.h>
 # include <stdlib.h>
 # include <unistd.h>
-# include "../libft/libft.h"
+# include "../libft/includes/libft.h"
 # include <stdio.h>
 
 typedef struct	s_c

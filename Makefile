@@ -35,5 +35,3 @@ fclean: clean
 
 re: fclean all
 
-k:
-	$(CC) $(FLAGS) $(SRC_PATH) -o $(NAME) $(LIBFT)

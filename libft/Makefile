@@ -27,16 +27,18 @@ SRC = ft_isascii.c ft_memcmp.c ft_strchr.c ft_strlen.c ft_strrchr.c \
 	ft_putchar.c ft_putnbr.c ft_strclr.c ft_striteri.c ft_strnequ.c \
 	ft_strtrim.c ft_itoa.c ft_putchar_fd.c ft_putnbr_fd.c ft_strdel.c \
 	ft_strjoin.c ft_strnew.c ft_lstnew.c ft_lstdelone.c ft_lstdel.c \
-	ft_lstadd.c ft_lstiter.c ft_lstmap.c ft_isblank.c \
+	ft_lstadd.c ft_lstiter.c ft_lstmap.c ft_isblank.c
 
 OBJ = $(SRC:.c=.o)
 
-$(NAME):
-	$(CC) $(FLAGS) -c $(SRC) 
+all: $(NAME)
+
+$(OBJ):
+	$(CC) $(FLAGS) -c $(SRC)
+
+$(NAME): $(OBJ)
 	ar rc $(NAME) $(OBJ)
 	ranlib $(NAME)
-
-all: $(NAME)
 
 clean:
 	rm -f $(OBJ)
