@@ -16,7 +16,6 @@
 # include <stdlib.h>
 # include <unistd.h>
 # include "../libft/includes/libft.h"
-# include <stdio.h>
 
 typedef struct	s_c
 {
@@ -53,7 +52,6 @@ unsigned char	hash(void);
 unsigned char	nl(void);
 void			help(void);
 t_v				ssq(unsigned char pcs);
-t_c				itc(unsigned char i, unsigned char o, unsigned char d);
 unsigned char	place(char map[14][14], unsigned char pc);
 unsigned char	putpc(char map[14][14], unsigned char pc, t_c c);
 void			trysize(void);

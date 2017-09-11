@@ -15,27 +15,23 @@
 unsigned char	place(char mcp[14][14], unsigned char pc)
 {
 	char	map[14][14];
-	t_v		j;
+	t_c		j;
 
-	j = (t_v){0, 0};
+	j = (t_c){0, 0};
 	mapcp(mcp, map);
 	if (!g_tab[pc])
 		finish(map);
-	while (j.i < g_sq.o)
+	while (j.y < g_sq.o)
 	{
-		if (j.i < g_sq.i)
+		while (j.x < g_sq.o)
 		{
-			while (j.o++ < j.i + 1)
-				if (fits(map, pc, itc(j.i, j.o - 1, 1)))
-					if (putpc(map, pc, itc(j.i, j.o - 1, 1)))
-						return (1);
+			if (fits(map, pc, j))
+				if (putpc(map, pc, j))
+					return (1);
+			j.x++;
 		}
-		else
-			while (j.o++ < g_sq.o - j.i)
-				if (fits(map, pc, itc(j.i, j.o - 1, 0)))
-					if (putpc(map, pc, itc(j.i, j.o - 1, 0)))
-						return (1);
-		j = (t_v){j.i + 1, 0};
+		j.x = 0;
+		j.y++;
 	}
 	return (0);
 }
@@ -62,16 +58,6 @@ unsigned char	putpc(char map[14][14], unsigned char pc, t_c c)
 			i++;
 		}
 	return (0);
-}
-
-t_c				itc(unsigned char i, unsigned char o, unsigned char d)
-{
-	t_c res;
-
-	if (d)
-		return (res = (t_c){i - o, o});
-	else
-		return (res = (t_c){g_sq.i - (o + 1), (i - g_sq.i) + o + 1});
 }
 
 void			trysize(void)
